@@ -53,6 +53,8 @@
   justify-content: center;
 
   align-items: center;
+  text-align: center;
+  size: 30px;
 
   width: 100vw;
 
@@ -73,6 +75,7 @@
   padding-bottom: 20px;
 
   border-radius: 8px;
+  color: white;
 
   background-color: white;
 
@@ -81,9 +84,9 @@
 
 
 .Auth-form-content {
+  align-items: center;
+  padding-left: 15%;
 
-  padding-left: 12%;
-
-  padding-right: 12%;
+  padding-right: 15%;
 
 }
