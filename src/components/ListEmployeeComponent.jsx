@@ -18,23 +18,16 @@ class ListEmployeeComponent extends Component {
     }
     
 
-    deleteEmployee(id){
+   deleteEmployee(id){
         const conf= window.confirm("Do you want to delete ?");
 
         if(conf){
-    
-        axios.delete('http://localhost:8090/api/v1/employees/'+id)
-    
-        .then(res => {
-    
-          window.location.reload();
-    
-        })
-    
-        .catch(err => console.log(err));
-        EmployeeService.deleteEmployee(id).then( res => {
-            this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
-        });
+            EmployeeService.deleteEmployee(id)
+            .then( res => {
+                this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
+                window.location.reload();
+
+            });
     }
 }
     viewEmployee(id){
