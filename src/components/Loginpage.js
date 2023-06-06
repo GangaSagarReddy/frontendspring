@@ -42,8 +42,8 @@ const Home = () => {
   return (
     <div
       style={{
-        backgroundImage: `url('https://www.freecodecamp.org/news/content/images/size/w2000/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg')`,
-        height: "700px",
+        backgroundImage: `url('https://wallpaperaccess.com/full/452101.jpg')`,
+        height: "750px",
       }}
     >
       <div className="Auth-form-container">
