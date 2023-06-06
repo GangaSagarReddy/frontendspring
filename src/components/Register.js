@@ -41,7 +41,7 @@ const Register = () => {
     <div
       style={{
         backgroundImage: `url('https://static2.bigstockphoto.com/7/7/2/large1500/277401307.jpg')`,
-        height: "700px",
+        height: "750px",
       }}
     >
       <div className="Auth-form-container">
