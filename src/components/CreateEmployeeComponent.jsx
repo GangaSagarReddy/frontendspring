@@ -10,7 +10,11 @@ class CreateEmployeeComponent extends Component {
             
             firstName: '',
             lastName: '',
-            emailId: ''
+            emailId: '',
+            department:'',
+            salary:'',
+            gender:'',
+            dob:''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -18,7 +22,7 @@ class CreateEmployeeComponent extends Component {
     }
     saveEmployee = (e) => {
         e.preventDefault();
-        let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
+        let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId,department :this.state.department,salary:this.state.salary,gender:this.state.gender,dob:this.state.dob};
         console.log('employee => ' + JSON.stringify(employee));
 
         EmployeeService.createEmployee(employee).then(res =>{
@@ -38,20 +42,33 @@ class CreateEmployeeComponent extends Component {
         this.setState({emailId: event.target.value});
     }
 
+    changeDepartmentHandler= (event) => {
+        this.setState({department: event.target.value});
+    }
+    changeSalaryHandler= (event) => {
+        this.setState({salary: event.target.value});
+    }
+    changeGenderHandler= (event) => {
+        this.setState({gender: event.target.value});
+    }
+    changeDobHandler= (event) => {
+        this.setState({dob: event.target.value});
+    }
+
     cancel(){
         this.props.history.push('/employees');
     }
     render(){
-        return(<div style={{backgroundImage:`url('https://thumbs.dreamstime.com/z/beach-waves-top-view-turquoise-water-background-top-view-summer-seascape-air-top-view-drone-travel-image-139843239.jpg')`, height: '700px'}}>
+        return(<div style={{backgroundImage:`url('https://thumbs.dreamstime.com/z/beach-waves-top-view-turquoise-water-background-top-view-summer-seascape-air-top-view-drone-travel-image-139843239.jpg')`, height: '900px'}}>
 
             <br></br>
-               <div className = "container">
+               <div className = "container" >
                     <div className = "row">
-                        <div className = "d-flex w-50 vh-50 justify-content-center align-items-center" style={{ margin: '8rem',backgroundColor:'' }}>
+                        <div className = "d-flex w-50 vh-50 justify-content-center align-items-center" style={{ margin: '0rem',backgroundColor:'' }}>
                             
                             <div className = "card-body">
                                 <form>
-                                    <div className = "form-group" >
+                                    <div className = "form-group"  >
                                     <h3 className="text-center" style={{fontFamily:'cursive',color:'aqua',fontSize:50}} >Add employee</h3>
                                         <label style={{fontFamily:'-moz-initial',color:'teal',fontSize:25}}> First Name: </label>
                                         <input placeholder="First Name" name="firstName" className="form-control" 
@@ -67,9 +84,33 @@ class CreateEmployeeComponent extends Component {
                                         <input placeholder="Email Address" name="emailId" className="form-control" 
                                             value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                     </div>
-
+                                    <div className = "form-group">
+                                        <label style={{fontFamily:'-moz-initial',color:'teal',fontSize:25}}> Department: </label>
+                                        <input placeholder="Department" name="department" className="form-control" 
+                                            value={this.state.department} onChange={this.changeDepartmentHandler}/>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label style={{fontFamily:'-moz-initial',color:'teal',fontSize:25}}> Salary: </label>
+                                        <input placeholder="salary" name="salary" className="form-control" 
+                                            value={this.state.salary} onChange={this.changeSalaryHandler}/>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label style={{fontFamily:'-moz-initial',color:'teal',fontSize:25}}> Gender: </label>
+                                        <select placeholder="Enter M or F" name="gender" className="form-control" 
+                                            value={this.state.gender} onChange={this.changeGenderHandler}>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                        </select>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label style={{fontFamily:'-moz-initial',color:'teal',fontSize:25}}> DateofBirth: </label>
+                                        <input placeholder="dob" name="dob" className="form-control"  type='date'
+                                            value={this.state.dob} onChange={this.changeDobHandler}/>
+                                    </div>
+                                    <div className = "form-group">
                                     <Link to='/employees'><button className="btn btn-success" onClick={this.saveEmployee} >Save</button></Link>
                                     <Link to='/employees'> <button className="btn btn-info"  style={{marginLeft: "10px"}}>Ok</button></Link>
+                                    </div>                            
                                 </form>
                             </div>
                         </div>
