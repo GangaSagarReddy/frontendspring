@@ -61,6 +61,20 @@
   height: 80vh;
 
 }
+.container {
+
+  
+
+  justify-content: center;
+
+  align-items: center;
+  size: 30px;
+
+  width: 100vw;
+
+  height: 100vh;
+
+}
 
 
 
@@ -88,5 +102,17 @@
   padding-left: 15%;
 
   padding-right: 15%;
+
+}
+.form-group{
+  
+  align-items: right;
+  justify-content: center;
+  
+  padding-left: 10%;
+  width: 50vw;
+
+  padding-right: 10%;
+  width: 50vw;
 
 }
