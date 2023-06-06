@@ -83,7 +83,8 @@ class UpdateEmployeeComponent extends Component {
     }
     render(){
         return( <div style={{backgroundImage:`url('https://www.freepsd360.com/wp-content/uploads/2022/11/Stage-Light-Background-HD-Free-Download-4.jpg')`, height: '900px'}}>
-            <br></br>
+            
+            
                <div className = "container">
                     <div className = "row">
                         <div className = " w-50 vh-50 justify-content-center align-items-center" style={{ margin: '5rem',backgroundColor:'' }}>
