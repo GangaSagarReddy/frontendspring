@@ -60,8 +60,9 @@ class CreateEmployeeComponent extends Component {
     }
     render(){
         return(<div style={{backgroundImage:`url('https://thumbs.dreamstime.com/z/beach-waves-top-view-turquoise-water-background-top-view-summer-seascape-air-top-view-drone-travel-image-139843239.jpg')`, height: '900px'}}>
-
-            <br></br>
+            <div>
+                <Link to='/employees'> <button className="btn btn-danger" size="xl" style={{marginLeft: "10px",size:'xl'}}>{"<<Back"}</button></Link>
+                </div>
                <div className = "container" >
                     <div className = "row">
                         <div className = "d-flex w-50 vh-50 justify-content-center align-items-center" style={{ margin: '0rem',backgroundColor:'' }}>
