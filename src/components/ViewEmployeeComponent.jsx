@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import EmployeeService from '../services/EmployeeService'
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export function withRouter(Children){
@@ -27,8 +28,12 @@ class ViewEmployeeComponent extends Component {
 
     render() {
         return (
-            <div  style={{ backgroundImage:`url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700383971.jpg')` , height:'700px'}}>
+            
+            <div  style={{ backgroundImage:`url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700383971.jpg')` , height:'800px'}}>
                 <br></br>
+                <div>
+                <Link to='/employees'> <button className="btn btn-danger" size="xl" style={{marginLeft: "10px",size:'xl'}}>{"<<Back"}</button></Link>
+                </div>
                 <div className = "  justify-content-center align-items-center" style={{ margin: '8rem'}}>
                 <div className = "card col-md-6 onset-md-5" >
                     <h3 className = "text-center" style={{fontFamily:'cursive',color:'blue',fontSize:30}}> View Employee Details</h3>
