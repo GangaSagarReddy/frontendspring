@@ -18,7 +18,7 @@ class ListEmployeeComponent extends Component {
     }
     
 
-   deleteEmployee(id){
+    deleteEmployee(id){
         const conf= window.confirm("Do you want to delete ?");
 
         if(conf){
@@ -28,7 +28,23 @@ class ListEmployeeComponent extends Component {
                 window.location.reload();
 
             });
-    }
+    
+        // axios.delete('http://localhost:8090/api/v1/employees/'+id)
+    
+        // .then(res => {
+    
+        //   window.location.reload();
+         
+    
+        // })
+    
+        // .catch(err => console.log(err));
+    
+    //     EmployeeService.deleteEmployee(id).then( res => {
+    //         this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
+    //     });
+     }
+    
 }
     viewEmployee(id){
         <Link to={`/view-employee/${id}`}>this.props.history.push(`/view-employee/${id}`);</Link>
@@ -51,7 +67,7 @@ class ListEmployeeComponent extends Component {
     render() {
         return (
             
-            <div style={{backgroundImage:`url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTNa0xtQZDXjzU90-6xcgAP0ca8BeasKR7lpFnQ-u1-Q&usqp=CAU&ec=48665698')`, height: '700px'}}>
+            <div style={{backgroundImage:`url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTNa0xtQZDXjzU90-6xcgAP0ca8BeasKR7lpFnQ-u1-Q&usqp=CAU&ec=48665698')`, height: '900px'}}>
                 <div className='container'>
                     <h2 className="text-center">Employees List</h2>
                     <div className = "row">
@@ -66,6 +82,10 @@ class ListEmployeeComponent extends Component {
                                     <th> Employee First Name</th>
                                     <th> Employee Last Name</th>
                                     <th> Employee Email Id</th>
+                                    <th> Employee Department</th>
+                                    <th> Employee Salary</th>
+                                    <th> Employee Gender</th>
+                                    <th> Employee DateOfBirth</th>
                                     <th> Actions</th>
                                 </tr>
                             </thead>
@@ -77,10 +97,14 @@ class ListEmployeeComponent extends Component {
                                              <td> { employee.firstName} </td>   
                                              <td> {employee.lastName}</td>
                                              <td> {employee.emailId}</td>
+                                             <td> {employee.department}</td>
+                                             <td> {employee.salary}</td>
+                                             <td> {employee.gender}</td>
+                                             <td> {employee.dob}</td>
                                              <td>
                                              <Link to={`/update-employee/${employee.id}`}><button  onClick={ () => this.editEmployee(employee.id)} className="btn btn-success" >Edit </button></Link>
-                                                <button style={{marginLeft: "10px"}} onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
-                                             <Link to={`/view-employee/${employee.id}`}>   <button style={{marginLeft: "10px"}} onClick={ () => this.viewEmployee(employee.id)} className="btn btn-info">View </button></Link>
+                                              <Link to={'/employees'}>  <button style={{marginLeft: "50px"}} onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button></Link>
+                                             <Link to={`/view-employee/${employee.id}`}>   <button style={{marginLeft: "50px"}} onClick={ () => this.viewEmployee(employee.id)} className="btn btn-info">View </button></Link>
                                              </td>
                                         </tr>
                                     )
