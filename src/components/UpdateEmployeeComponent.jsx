@@ -48,9 +48,19 @@ class UpdateEmployeeComponent extends Component {
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId,department :this.state.department,salary:this.state.salary,gender:this.state.gender,dob:this.state.dob};
         console.log('employee => ' + JSON.stringify(employee));
 
-        EmployeeService.updateEmployee(employee,this.state.id).then(res =>{
+       
+        const conf= window.confirm("Do you want to update ?");
+
+        if(conf){ EmployeeService.updateEmployee(employee,this.state.id)
+            .then(res =>{
             <Link to='/employees'> this.props.history.push('/employees');</Link>
-        });
+        
+            
+                window.location.replace("/employees");
+                
+            });
+
+            }
         
     }
     changeFirstNameHandler= (event) => {
