@@ -121,6 +121,7 @@ class UpdateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> Gender: </label>
                                         <select placeholder="Enter M or F" name="gender" className="form-control" 
                                             value={this.state.gender} onChange={this.changeGenderHandler}>
+                                                 <option>None</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                         </select>
