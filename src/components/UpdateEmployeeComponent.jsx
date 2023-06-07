@@ -144,7 +144,7 @@ class UpdateEmployeeComponent extends Component {
                                     <div className = "form-group">
 
                                     <Link to='/employees'><button className="btn btn-success"  onClick={this.updateEmployee}>Save</button></Link>
-                                    <Link to='/employees'> <button className="btn btn-info"  style={{marginLeft: "10px"}}>OK</button></Link>
+                                    <Link to='/employees'> <button className="btn btn-danger"  style={{marginLeft: "10px"}}>Cancel</button></Link>
                                     </div>
                                 </form>
                             </div>
