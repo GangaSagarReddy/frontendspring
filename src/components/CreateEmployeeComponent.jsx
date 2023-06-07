@@ -29,8 +29,8 @@ class CreateEmployeeComponent extends Component {
         if(conf){
             EmployeeService.createEmployee(employee)
             .then(res =>{
-                <Link to='/employees'></Link>
-                window.location.reload();
+                <Link to='/employees'> this.props.history.push('/employees');</Link>
+                window.location.replace("/employees");
                 
             });
 
@@ -120,7 +120,7 @@ class CreateEmployeeComponent extends Component {
                                     </div>
                                     <div className = "form-group">
                                     <Link to='/employees'><button className="btn btn-success" onClick={this.saveEmployee} >Save</button></Link>
-                                    <Link to='/employees'> <button className="btn btn-info"  style={{marginLeft: "10px"}}>Ok</button></Link>
+                                    <Link to='/employees'> <button className="btn btn-danger"  style={{marginLeft: "10px"}}>Cancel</button></Link>
                                     </div>                            
                                 </form>
                             </div>
