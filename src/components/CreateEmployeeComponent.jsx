@@ -24,10 +24,19 @@ class CreateEmployeeComponent extends Component {
         e.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId,department :this.state.department,salary:this.state.salary,gender:this.state.gender,dob:this.state.dob};
         console.log('employee => ' + JSON.stringify(employee));
+        const conf= window.confirm("Do you want to save ?");
 
-        EmployeeService.createEmployee(employee).then(res =>{
-            <Link to='/employees'>this.props.history.push('/employees');</Link>
-        });
+        if(conf){
+            EmployeeService.createEmployee(employee)
+            .then(res =>{
+                <Link to='/employees'></Link>
+                window.location.reload();
+                
+            });
+
+            }
+
+        
     }
     changeFirstNameHandler= (event) => {
         this.setState({firstName: event.target.value});
@@ -99,6 +108,7 @@ class CreateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'teal',fontSize:25}}> Gender: </label>
                                         <select placeholder="Enter M or F" name="gender" className="form-control" 
                                             value={this.state.gender} onChange={this.changeGenderHandler}>
+                                                <option>None</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                         </select>
