@@ -50,30 +50,31 @@ const Register = () => {
           style={{ backgroundColor: "black", color: "white" }}
         >
           <div className="Auth-form-content">
-            <h1>SignUp !</h1>
+          <h1> &emsp;SignUp !</h1><br></br>
 
             <form className="container" onSubmit={handlesubmit}>
-              <div className="Auth-form-content">
-                <label className="label">Name :-</label>
+              <div className="">
+                <label className="label" required>Name </label>&emsp;&ensp;
 
-                <input type="text" required onChange={nameChange}></input>
+                <input type="text" required onChange={nameChange} placeholder="Enter Name"></input>
+              </div><br></br>
+
+              <div className="">
+                <label className="label">Email </label>&emsp;&ensp;&nbsp;
+
+                <input type="text" required onChange={emailChange} placeholder="Enter Email"></input>
               </div>
+              <br></br>
 
-              <div className="Auth-form-content">
-                <label className="label">Email :-</label>
-
-                <input type="text" required onChange={emailChange}></input>
-              </div>
-
-              <div className="Auth-form-content">
+              <div className="">
                 <label className="label" required>
                   Password
-                </label>
+                </label>&nbsp;
 
                 <input
                   type="password"
                   required
-                  onChange={passwordChange}
+                  onChange={passwordChange} placeholder="Enter password"
                 ></input>
               </div>
               <br></br>
