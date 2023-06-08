@@ -52,19 +52,20 @@ const Home = () => {
           style={{ backgroundColor: "black", color: "white" }}
         >
           <div className="Auth-form-content">
-            <h1>SignIn !</h1>
+            <h1> &nbsp;&nbsp;SignIn !</h1>
+            <br></br>
 
             <form className="containe" onSubmit={handlesubmit}>
-              <div className="Auth-form-content">
-                <label className="label">Email :- </label>
-
+              <div className="">
+                <label className="label">&nbsp; Email  </label>&emsp;&emsp;&nbsp;
+                
                 <input type="text" required onChange={emailChange}></input>
               </div>
 
-              <div className="Auth-form-content">
+              <div className="">
                 <label className="label" required>
                   Password
-                </label>
+                </label>&emsp;
 
                 <input
                   type="password"
