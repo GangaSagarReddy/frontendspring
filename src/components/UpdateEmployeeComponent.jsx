@@ -49,9 +49,31 @@ class UpdateEmployeeComponent extends Component {
         console.log('employee => ' + JSON.stringify(employee));
 
        
-        const conf= window.confirm("Do you want to update ?");
+        // const conf= window.confirm("Do you want to update ?");
+        if (this.state.firstName.length === 0) {
+            alert("firstName field is Empty");
+          }
+         else if (this.state.lastName.length === 0) {
+            alert("lastName field is Empty");
+          }
+          else if (this.state.emailId.length === 0  ) {
+            alert("emailId field is Empty");
+          }
+          else if (this.state.department.length === 0) {
+            alert("Department field is Empty");
+          }
+          else if (this.state.salary.length === 0) {
+            alert("salary field is Empty");
+          }
+          else if (this.state.gender.length === 0) {
+            alert("gender field is Empty");
+          }
+          else if (this.state.dob.length === 0) {
+            alert("dob field is Empty");
+          }
 
-        if(conf){ EmployeeService.updateEmployee(employee,this.state.id)
+        else if(window.confirm("Do you want to save ?"))
+        { EmployeeService.updateEmployee(employee,this.state.id)
             .then(res =>{
             <Link to='/employees'> this.props.history.push('/employees');</Link>
         
@@ -119,12 +141,18 @@ class UpdateEmployeeComponent extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> Department: </label>
-                                        <input placeholder="Department" name="department" className="form-control" 
-                                            value={this.state.department} onChange={this.changeDepartmentHandler}/>
+                                        <select placeholder="Department" name="department" className="form-control" 
+                                            value={this.state.department} required onChange={this.changeDepartmentHandler}>
+                                                <option>FullStackDeveloper</option>
+                                                <option>Tester</option>
+                                                <option>JavaDeveloper</option>
+                                                <option>sales</option>
+
+                                         </select>
                                     </div>
                                     <div className = "form-group">
-                                        <label style={{fontFamily:'-moz-initial',color:'gold'}}> Salary: </label>
-                                        <input placeholder="salary" name="salary" className="form-control" 
+                                        <label  type="top-down" style={{fontFamily:'-moz-initial',color:'gold'}}> Salary: </label>
+                                        <input placeholder="salary" type="number"  name="salary" className="form-control" 
                                             value={this.state.salary} onChange={this.changeSalaryHandler}/>
                                     </div>
                                     <div className = "form-group">
