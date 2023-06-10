@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import EmployeeService from '../services/EmployeeService';
 import { Link } from 'react-router-dom';
+import { Input } from '@material-ui/icons';
+import { Alert } from 'bootstrap';
 
 class CreateEmployeeComponent extends Component {
     constructor(props) {
@@ -8,25 +10,47 @@ class CreateEmployeeComponent extends Component {
         this.state = {
             // step 2
             
-            firstName: '',
-            lastName: '',
-            emailId: '',
-            department:'',
-            salary:'',
-            gender:'',
-            dob:''
+            firstName:"",
+            lastName:"",
+            emailId:"",
+            department:"",
+            salary:"",
+            gender:"",
+            dob:""
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.saveEmployee = this.saveEmployee.bind(this);
     }
-    saveEmployee = (event) => {
+    saveEmployee = async(event) => {
         event.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId,department :this.state.department,salary:this.state.salary,gender:this.state.gender,dob:this.state.dob};
         console.log('employee => ' + JSON.stringify(employee));
-        const conf= window.confirm("Do you want to save ?");
-
-        if(conf){
+        // const conf= window.confirm("Do you want to save ?");
+ 
+        if (this.state.firstName.length === 0) {
+            alert("firstName field is Empty");
+          }
+         else if (this.state.lastName.length === 0) {
+            alert("lastName field is Empty");
+          }
+          else if (this.state.emailId.length === 0  ) {
+            alert("emailId field is Empty");
+          }
+          else if (this.state.department.length === 0) {
+            alert("Department field is Empty");
+          }
+          else if (this.state.salary.length === 0) {
+            alert("salary field is Empty");
+          }
+          else if (this.state.gender.length === 0) {
+            alert("gender field is Empty");
+          }
+          else if (this.state.dob.length === 0) {
+            alert("dob field is Empty");
+          }
+          
+        else if(window.confirm("Do you want to save ?")){
             EmployeeService.createEmployee(employee)
             .then(res =>{
                 <Link to='/employees'> this.props.history.push('/employees');</Link>
@@ -80,28 +104,36 @@ class CreateEmployeeComponent extends Component {
                                 <form>
                                     <div className = "form-group" style={{alignItems:"-moz-initial"}}>
                                     <h3 className="text-center" style={{fontFamily:'cursive',color:'aqua',fontSize:50}} >Add employee</h3>
-                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> First Name: </label>
+                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required="required"> First Name: </label>
                                         <input placeholder="First Name" name="firstName" className="form-control" 
-                                            value={this.state.firstName}  required onChange={this.changeFirstNameHandler}/>
+                                            value={this.state.firstName}  required="required" onChange={this.changeFirstNameHandler}/>
+                                    
                                     </div>
                                     <div className = "form-group">
-                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Last Name: </label>
+                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} > Last Name: </label>
                                         <input placeholder="Last Name" name="lastName" className="form-control" 
                                             value={this.state.lastName} required onChange={this.changeLastNameHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Email Id: </label>
-                                        <input placeholder="Email Address" name="emailId" className="form-control" 
-                                            value={this.state.emailId} onChange={this.changeEmailHandler}/>
+                                        <input type='text' placeholder="Email Address" name="emailId" className="form-control" 
+                                            value={this.state.emailId} required onChange={this.changeEmailHandler} />
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Department: </label>
-                                        <input placeholder="Department" name="department" className="form-control" 
-                                            value={this.state.department} required onChange={this.changeDepartmentHandler}/>
+                                        <select placeholder="Department" name="department" className="form-control" 
+                                            value={this.state.department} required onChange={this.changeDepartmentHandler}>
+                                                <option>FullStackDeveloper</option>
+                                                <option>Tester</option>
+                                                <option>JavaDeveloper</option>
+                                                <option>sales</option>
+
+                                         </select>       
+
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Salary: </label>
-                                        <input placeholder="salary" name="salary" className="form-control" 
+                                        <input placeholder="salary" type="number"  name="salary" className="form-control" 
                                             value={this.state.salary} required onChange={this.changeSalaryHandler}/>
                                     </div>
                                     <div className = "form-group">
@@ -122,12 +154,12 @@ class CreateEmployeeComponent extends Component {
                                         </select>
                                     </div>
                                     <div className = "form-group">
-                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}}> DateofBirth: </label>
+                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> DateofBirth: </label>
                                         <input placeholder="dob" name="dob" className="form-control"  type='date'
                                             value={this.state.dob} required onChange={this.changeDobHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                    <Link to='/employees'><button className="btn btn-success" onClick={this.saveEmployee} >Save</button></Link>
+                                    <Link to='/employees'><button className="btn btn-success"  required onClick={this.saveEmployee} >Save</button></Link>
                                     <Link to='/employees'> <button className="btn btn-danger"  style={{marginLeft: "10px"}}>Cancel</button></Link>
                                     </div>                            
                                 </form>
