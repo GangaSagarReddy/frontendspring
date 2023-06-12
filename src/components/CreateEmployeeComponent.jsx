@@ -122,6 +122,7 @@ class CreateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Department: </label>
                                         <select placeholder="Department" name="department" className="form-control" 
                                             value={this.state.department} required onChange={this.changeDepartmentHandler}>
+                                               <option></option>
                                                 <option>FullStackDeveloper</option>
                                                 <option>Tester</option>
                                                 <option>JavaDeveloper</option>
