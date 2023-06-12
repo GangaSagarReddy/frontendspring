@@ -143,6 +143,7 @@ class UpdateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> Department: </label>
                                         <select placeholder="Department" name="department" className="form-control" 
                                             value={this.state.department} required onChange={this.changeDepartmentHandler}>
+                                                <option>None</option>
                                                 <option>FullStackDeveloper</option>
                                                 <option>Tester</option>
                                                 <option>JavaDeveloper</option>
