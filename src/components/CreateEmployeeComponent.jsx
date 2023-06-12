@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import EmployeeService from '../services/EmployeeService';
 import { Link } from 'react-router-dom';
-import { Input } from '@material-ui/icons';
-import { Alert } from 'bootstrap';
+
 
 class CreateEmployeeComponent extends Component {
     constructor(props) {
