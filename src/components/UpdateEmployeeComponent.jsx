@@ -23,6 +23,8 @@ class UpdateEmployeeComponent extends Component {
             salary:'',
             gender:'',
             dob:''
+       
+            
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -128,6 +130,7 @@ class UpdateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> First Name: </label>
                                         <input placeholder="First Name" name="firstName" className="form-control" 
                                             value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
+                                          
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> Last Name: </label>
@@ -143,7 +146,7 @@ class UpdateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> Department: </label>
                                         <select placeholder="Department" name="department" className="form-control" 
                                             value={this.state.department} required onChange={this.changeDepartmentHandler}>
-                                                <option>None</option>
+                                               <option>None</option>
                                                 <option>FullStackDeveloper</option>
                                                 <option>Tester</option>
                                                 <option>JavaDeveloper</option>
@@ -157,13 +160,34 @@ class UpdateEmployeeComponent extends Component {
                                             value={this.state.salary} onChange={this.changeSalaryHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                        <label style={{fontFamily:'-moz-initial',color:'gold'}}> Gender: </label>
-                                        <select placeholder="Enter M or F" name="gender" className="form-control" 
+                                       
+                                        {/* <select placeholder="Enter M or F" name="gender" className="form-control" 
                                             value={this.state.gender} onChange={this.changeGenderHandler}>
                                                  <option>None</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
-                                        </select>
+                                        </select> */}
+                                        <div className="radio">
+                                        <label style={{fontFamily:'-moz-initial',color:'gold'}}> Gender:&nbsp; </label>
+                                    <label style={{fontFamily:'-moz-initial',color:'gold',fontSize:20}}>
+                                        <input
+                                           type="radio"
+                                           value="Male"
+                                           checked={this.state.gender === "Male"}
+                                            onChange={this.changeGenderHandler}
+                                               />
+                                            Male &nbsp;  
+                                            </label>
+                                    <label style={{fontFamily:'-moz-initial',color:'gold',fontSize:20}}>
+                                        <input
+                                           type="radio"
+                                           value="Female"
+                                           checked={this.state.gender === "Female"}
+                                            onChange={this.changeGenderHandler}
+                                               />
+                                            Female
+                                            </label>
+                                          </div>
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'gold'}}> DateofBirth: </label>
