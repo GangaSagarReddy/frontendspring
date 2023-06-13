@@ -122,7 +122,7 @@ class CreateEmployeeComponent extends Component {
                                         <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Department: </label>
                                         <select placeholder="Department" name="department" className="form-control" 
                                             value={this.state.department} required onChange={this.changeDepartmentHandler}>
-                                               <option>None</option>
+                                                 <option>None</option>
                                                 <option>FullStackDeveloper</option>
                                                 <option>Tester</option>
                                                 <option>JavaDeveloper</option>
@@ -137,21 +137,35 @@ class CreateEmployeeComponent extends Component {
                                             value={this.state.salary} required onChange={this.changeSalaryHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                        <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Gender: </label>&emsp;
-                                        {/* <label  style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}}>
-                                        <input type="radio"  name="gender" value={this.state.gender} required onChange={this.changeGenderHandler} />
-                                        Male
-                                        </label>&emsp; */}
-                                        {/* <input type="radio"  name="gender"  value={this.state.gender} required onChange={this.changeGenderHandler} />
-                                        <label  style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}}>Female</label>&emsp;
-                                        <input type="radio"  name="gender"  value={this.state.gender} required onChange={this.changeGenderHandler} />
-                                       <label  style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}}>Other</label>&emsp; */}
-                                        <select placeholder="Enter M or F" name="gender" className="form-control" 
+                                    <div className="radio">
+                                    <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> Gender: </label>&emsp;
+                                    <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}}>
+                                        <input
+                                           type="radio"
+                                           value="Male"
+                                           checked={this.state.gender === "Male"}
+                                            onChange={this.changeGenderHandler}
+                                               />
+                                            Male
+                                            </label>
+                                    <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}}>
+                                        <input
+                                           type="radio"
+                                           value="Female"
+                                           checked={this.state.gender === "Female"}
+                                            onChange={this.changeGenderHandler}
+                                               />
+                                            Female
+                                            </label>
+                                          </div>
+                                        
+                                        
+                                        {/* <select placeholder="Enter M or F" name="gender" className="form-control" 
                                             value={this.state.gender} required onChange={this.changeGenderHandler}>
                                                 <option>None</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
-                                        </select>
+                                        </select> */}
                                     </div>
                                     <div className = "form-group">
                                         <label style={{fontFamily:'-moz-initial',color:'aqua',fontSize:25}} required> DateofBirth: </label>
