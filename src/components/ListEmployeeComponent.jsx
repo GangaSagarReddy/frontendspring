@@ -78,7 +78,7 @@ class ListEmployeeComponent extends Component {
                     </div>
                     <br></br>
                     <div className = "row">
-                        <table className = "table table-striped table-bordered">
+                        <table className = "table table-striped table-bordered"  class="table table-hover">
 
                             <thead class='thead-dark'>
                                 <tr>
@@ -89,7 +89,7 @@ class ListEmployeeComponent extends Component {
                                     <th> Employee Salary</th>
                                     <th> Employee Gender</th>
                                     <th> Employee DateOfBirth</th>
-                                    <th style={{width:"300px",textAlign:"center"}}> Actions</th>
+                                    <th style={{width:"300px",textAlign:"center",fontSize:'20px'}}> Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
