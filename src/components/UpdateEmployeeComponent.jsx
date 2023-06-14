@@ -9,6 +9,11 @@ export function withRouter(Children){
         return  <Children{...props} match={match}/>
     }
 }
+const emailState = {
+    emailId: '',
+    error: ''
+}
+const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 class UpdateEmployeeComponent extends Component {
     constructor(props) {
@@ -28,6 +33,7 @@ class UpdateEmployeeComponent extends Component {
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
+        this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.updateEmployee = this.updateEmployee.bind(this);
     }
 
@@ -58,9 +64,15 @@ class UpdateEmployeeComponent extends Component {
          else if (this.state.lastName.length === 0) {
             alert("lastName field is Empty");
           }
-          else if (this.state.emailId.length === 0  ) {
-            alert("emailId field is Empty");
-          }
+          else if(!this.state.emailId || regex.test(this.state.emailId) === false){
+            this.setState({
+                error: alert( "email format is incorrect"),
+                emailState
+            });
+            return false;
+            
+        
+         }
           else if (this.state.department.length === 0) {
             alert("Department field is Empty");
           }
