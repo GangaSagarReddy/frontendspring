@@ -50,7 +50,20 @@ class UpdateEmployeeComponent extends Component {
 
     });
 });
+
     }
+    handleLogout= () =>{
+        const confirm= window.confirm("Are you sure ?");
+        if(confirm){
+                window.location.href="/";
+            }
+            else{
+                window.location.href="/employees"
+            }
+     }
+    handleHomePage=() =>{
+        window.location.href="/employees";
+     }
     updateEmployee = (e) => {
         e.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId,department :this.state.department,salary:this.state.salary,gender:this.state.gender,dob:this.state.dob};
@@ -129,7 +142,13 @@ class UpdateEmployeeComponent extends Component {
     }
     render(){
         return( <div style={{backgroundImage:`url('https://www.freepsd360.com/wp-content/uploads/2022/11/Stage-Light-Background-HD-Free-Download-4.jpg')`, height: '900px'}}>
-            
+             <div className = "contair"><br/>
+                        <div className='btn-group btn-group-lg d-flex ' role="group" aria-label="....">
+                            <button type="button" className="btn btn-outline-light w-100" onClick={()=>this.handleHomePage()}>Home Page</button>
+                            <button type="button" className="btn btn-outline-light w-100 active" >edit</button>
+                            <button type="button" className="btn btn-outline-light w-100" onClick={()=>this.handleLogout()}>{"LOGOUT"}</button>
+                        </div>
+                        </div>
             
                <div className = "container">
                     <div className = "row">
