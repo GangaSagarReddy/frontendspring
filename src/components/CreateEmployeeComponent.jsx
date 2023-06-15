@@ -37,14 +37,26 @@ class CreateEmployeeComponent extends Component {
         }
         return true;
     }
+    handleLogout= () =>{
+        const confirm= window.confirm("Are you sure ?");
+        if(confirm){
+                window.location.href="/";
+            }
+            else{
+                window.location.href="/add-employee"
+            }
+     }
+     handleHomePage=() =>{
+        window.location.href="/employees";
+     }
     saveEmployee = async(event) => {
         event.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId,department :this.state.department,salary:this.state.salary,gender:this.state.gender,dob:this.state.dob};
         console.log('employee => ' + JSON.stringify(employee));
         // const conf= window.confirm("Do you want to save ?");
  
-        if (this.state.firstName.length === 0) {
-            alert("firstName field is Empty");
+        if (this.state.firstName.length ===0) {
+            alert("firstName contain atleast  3 characters ");
           }
          else if (this.state.lastName.length === 0) {
             alert("lastName field is Empty");
@@ -58,6 +70,7 @@ class CreateEmployeeComponent extends Component {
             
         
          }
+        
        
         //   else if(this.emailValidation()){
         //     console.log(this.state);
@@ -119,6 +132,13 @@ class CreateEmployeeComponent extends Component {
     }
     render(){
         return(<div style={{backgroundImage:`url('https://t4.ftcdn.net/jpg/03/94/95/17/240_F_394951749_TkFfmScEKhEeoYLUWhjnkYVUhzvDTBzn.jpg')`, height: '900px'}}>
+            <div className = "contair"><br/>
+                        <div className='btn-group btn-group-lg d-flex ' role="group" aria-label="....">
+                            <button type="button" className="btn btn-outline-light w-100" onClick={()=>this.handleHomePage()}>Home Page</button>
+                            <button type="button" className="btn btn-outline-light w-100 active" >Add New Employee</button>
+                            <button type="button" className="btn btn-outline-light w-100" onClick={()=>this.handleLogout()}>{"LOGOUT"}</button>
+                        </div>
+                        </div>
             <div>
                 <Link to='/employees'> <button className="btn btn-danger" size="xl" style={{marginLeft: "10px",size:'xl'}}>{"<<Back"}</button></Link>
                 </div>
