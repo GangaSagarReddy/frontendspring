@@ -28,6 +28,7 @@ class ListEmployeeComponent extends Component {
                 window.location.reload();
 
             });
+          
     
         // axios.delete('http://localhost:8090/api/v1/employees/'+id)
     
@@ -46,6 +47,18 @@ class ListEmployeeComponent extends Component {
      }
     
 }
+handleLogout= () =>{
+    const confirm= window.confirm("Are you sure ?");
+    if(confirm){
+            window.location.href="/";
+        }
+        else{
+            window.location.href="/employees";
+        }
+ }
+    handleAdd=() =>{
+        window.location.href="/add-employee"
+    }
     viewEmployee(id){
         <Link to={`/view-employee/${id}`}>this.props.history.push(`/view-employee/${id}`);</Link>
     }
@@ -68,11 +81,20 @@ class ListEmployeeComponent extends Component {
         return (
             
             <div style={{backgroundImage:`url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=996&t=st=1686046074~exp=1686046674~hmac=44cdc311ec1c664717a43b4d23466521150e7c2cf626e80f66cc0bb3139e92ac')`, height: '900px'}}>
-                <div>
+                 <br></br>
+                 <div className='containe'>
+                <div className='btn-group btn-group-lg d-flex' role="group" aria-label="....">
+                <button type="button" className="btn btn-outline-dark w-100 active">Home Page</button>
+                <button type="button" className="btn btn-outline-dark w-100" onClick={() =>this.handleAdd()} >Add New Employee</button>
+                <button type="button" className="btn btn-outline-dark w-100" onClick={()=>this.handleLogout()}>{"LOGOUT"}</button>
+                    </div>
+                    </div>
+                {/* <div>
+                    <br/>
                 <Link to='/'> <button  class="btn btn-danger btn-lg float-right" size="xl" style={{marginRight: "10px",size:'xl'}}>{"LOGOUT->"}</button></Link>
-                </div>
+                </div> */}
                 <div className='container'>
-                    <h2 className="text-center">Employees List</h2>
+                    {/* <h2 className="text-center">Employees List</h2> */}
                     <div className = "row">
                         <Link to='/add-employee'><button className='btn btn-primary'>Add Employee</button></Link>                    
                     </div>
