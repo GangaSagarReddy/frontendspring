@@ -3,6 +3,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
+const emailState = {
+  email: '',
+  error: ''
+}
+const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
 
 const Register = () => {
   const [name, namechange] = useState("");
@@ -10,6 +16,16 @@ const Register = () => {
   const [email, emailchange] = useState("");
 
   const [password, passwordchange] = useState("");
+ const emailValidation=()=>{
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if(!email || regex.test(email) === false){
+        emailChange({
+            error: alert( "Email is not valid")
+        });
+        return false;
+    }
+    return true;
+}
 
   const nameChange = (e) => {
     namechange(e.target.value);
@@ -28,6 +44,20 @@ const Register = () => {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
+   
+     if (name.length === 0) {
+      alert("Name field is Empty");
+    }
+  //  else if(!email || regex.test(email) === false){
+  //     emailChange({
+  //         error: alert( "email format is incorrect"),
+  //         emailState
+  //     });
+  //     return false;
+      
+  
+  //  }
+   else if(email.length>=0){
     const empData = { name, email, password };
 
     await axios.post("http://localhost:8090/reguser", empData);
@@ -35,6 +65,7 @@ const Register = () => {
     alert("Registered Successfully!");
 
     navigate("/");
+   }
   };
 
   return (
@@ -54,15 +85,15 @@ const Register = () => {
 
             <form className="container" onSubmit={handlesubmit}>
               <div className="">
-                <label className="label" required>Name </label>&emsp;&ensp;
+                <label className="label" >Name </label>&emsp;&ensp;
 
-                <input type="text" required onChange={nameChange} placeholder="Enter Name"></input>
+                <input type="text"  onChange={nameChange} placeholder="Enter Name"></input>
               </div><br></br>
 
               <div className="">
                 <label className="label">Email </label>&emsp;&ensp;&nbsp;
 
-                <input type="text" required onChange={emailChange} placeholder="Enter Email"></input>
+                <input type="email" required onChange={emailChange} placeholder="Enter Email"></input>
               </div>
               <br></br>
 
