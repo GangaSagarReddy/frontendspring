@@ -40,7 +40,7 @@ class ViewEmployeeComponent extends Component {
     render() {
         return (
             
-            <div  style={{ backgroundImage:`url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700383971.jpg')` , height:'800px'}}>
+            <div  style={{ backgroundImage:`url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700383971.jpg')` , height:'1000px'}}>
                  <div className = "contair"><br/>
                         <div className='btn-group btn-group-lg d-flex ' role="group" aria-label="....">
                             <button type="button" style={{backgroundColor:'black'}}  className="btn btn-outline-light w-100" onClick={()=>this.handleHomePage()}>Home Page</button>
@@ -56,6 +56,14 @@ class ViewEmployeeComponent extends Component {
                 <div className = "card col-md-6 onset-md-5" >
                     <h3 className = "text-center" style={{fontFamily:'cursive',color:'blue',fontSize:30}}> View Employee Details</h3>
                     <div className = "card-body">
+                    <div className = "row">
+                            <label style={{fontFamily:'cursive',color:'blue'}}> Employee image:  </label>
+                            <div>  <img
+              src={`data:image/jpeg;base64,${this.state.employee.image}`}
+              alt="User"
+              style={{height:150, width:150}}
+            /></div>
+                        </div>
                         <div className = "row">
                             <label style={{fontFamily:'cursive',color:'blue'}}> Employee First Name:  </label>
                             <div> { this.state.employee.firstName }</div>
