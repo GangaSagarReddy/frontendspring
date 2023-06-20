@@ -47,6 +47,37 @@ class ListEmployeeComponent extends Component {
      }
     
 }
+ renderUserImage = (employee) => {
+    if (employee.image && typeof employee.image === 'string') {
+      const blobData = atob(employee.image);
+      const arrayBuffer = new ArrayBuffer(blobData.length);
+      const uintArray = new Uint8Array(arrayBuffer);
+      for (let i = 0; i < blobData.length; i++) {
+        uintArray[i] = blobData.charCodeAt(i);
+      }
+      const blob = new Blob([arrayBuffer], { type: 'image/jpeg' });
+  
+      const base64String = URL.createObjectURL(blob);
+      return (
+        <img
+          src={base64String}
+          alt="User"
+          style={{height:70, width:70}}
+        />
+      );
+    } else if (employee.image && Array.isArray(employee.image)) {
+      const base64String = btoa(String.fromCharCode.apply(null, employee.image));
+      return (
+        <img
+          src={`data:image/jpeg;base64,${base64String}`}
+          alt="User"
+          style={{height:70, width:70}}
+        />
+      );
+    }
+    return null;
+  };
+  
 handleLogout= () =>{
     const confirm= window.confirm("Are you sure ?");
     if(confirm){
@@ -95,15 +126,16 @@ handleLogout= () =>{
                 </div> */}
                 <div className='container'>
                     {/* <h2 className="text-center">Employees List</h2> */}
-                    <div className = "row">
+                    {/* <div className = "row">
                         <Link to='/add-employee'><button className='btn btn-primary'>Add Employee</button></Link>                    
-                    </div>
+                    </div> */}
                     <br></br>
                     <div className = "row">
                         <table className = "table table-striped table-bordered"  class="table table-hover">
 
                             <thead class='thead-dark'>
                                 <tr>
+                                    <th style={{height:"0px",width:"0px"}} > Employee Image</th>
                                     <th> Employee First Name</th>
                                     <th> Employee Last Name</th>
                                     <th> Employee Email Id</th>
@@ -119,6 +151,7 @@ handleLogout= () =>{
                                     this.state.employees.map(
                                         employee => 
                                         <tr key = {employee.id}>
+                                            <td style={{height:"0px",width:"0px"}}>{this.renderUserImage(employee)}</td>
                                              <td> { employee.firstName} </td>   
                                              <td> {employee.lastName}</td>
                                              <td> {employee.emailId}</td>
